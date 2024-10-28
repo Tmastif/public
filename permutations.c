@@ -15,6 +15,27 @@
 #include <stdlib.h>
 #include <string.h>
 
+char	*ft_strdup(char *src)
+{
+	char	*dup;
+	int		i;
+
+	i = 0;
+	while (src[i])
+		i++;
+	dup = (char *)malloc(sizeof(char) * (i + 1));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (src[i])
+	{
+		dup[i] = src[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
 void	swap_char(char *a, char *b)
 {
 	char	tmp;
@@ -33,7 +54,7 @@ char	**permutations(char *str, int left, int len, char **res)
 		i = 0;
 		while(res[i] != NULL)
 			i++;
-		res[i] = strdup(str);
+		res[i] = ft_strdup(str);
 		res[i+1] = NULL;
 	}
 	else
